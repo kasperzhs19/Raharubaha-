@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Бедность - не порок | Достоинство вне богатства</title>
+    <style>
+      :root {
+        --stone-50: #fafaf9;
+        --stone-100: #f5f5f4;
+        --stone-200: #e7e5e4;
+        --stone-300: #d6d3d1;
+        --stone-400: #a8a29e;
+        --stone-500: #78716c;
+        --stone-600: #57534e;
+        --stone-700: #44403c;
+        --stone-800: #292524;
+        --stone-900: #1c1917;
+        --amber-400: #fbbf24;
+        --amber-500: #f59e0b;
+        --amber-600: #d97706;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        background: #faf9f6;
+        color: #2c2c2c;
+      }
+
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 50;
+        padding: 30px 0;
+        border-bottom: 1px solid transparent;
+        transition: background 0.35s ease, padding 0.35s ease, border-color 0.35s ease;
+      }
+
+      .nav.scrolled {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 16px 0;
+        border-color: var(--stone-200);
+      }
+
+      .nav-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand {
+        font-family: "Source Sans 3", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        font-weight: 800;
+        font-size: 1.25rem;
+      }
+
+      .menu {
+        display: flex;
+        gap: 28px;
+        font-family: "Source Sans 3", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-weight: 600;
+        font-size: 0.74rem;
+      }
+
+      .menu a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .menu a:hover {
+        color: var(--amber-600);
+      }
+
+      .hero {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: var(--stone-900);
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(28, 25, 23, 0.55), rgba(28, 25, 23, 0.55)),
+          url("https://images.unsplash.com/photo-1459180129673-eefb56f79b45?auto=format&fit=crop&w=1800&q=80");
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.1);
+        opacity: 0;
+        animation: heroIn 1.8s ease forwards;
+      }
+
+      @keyframes heroIn {
+        to {
+          opacity: 0.45;
+          transform: scale(1);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 900px;
+        padding: 0 16px;
+        animation: rise 0.8s ease 0.35s both;
+      }
+
+      .hero h1 {
+        margin: 0 0 28px;
+        color: #fff;
+        font-size: clamp(3rem, 10vw, 7rem);
+        line-height: 1.05;
+        font-weight: 500;
+      }
+
+      .hero h1 span {
+        color: var(--stone-300);
+        font-style: italic;
+        font-weight: 300;
+      }
+
+      .hero p {
+        margin: 0 auto;
+        max-width: 720px;
+        color: var(--stone-300);
+        font-family: "Source Sans 3", sans-serif;
+        font-size: clamp(1.1rem, 2.6vw, 1.65rem);
+        line-height: 1.55;
+        font-weight: 300;
+      }
+
+      .hero-line {
+        width: 1px;
+        height: 80px;
+        margin: 42px auto 0;
+        background: rgba(245, 158, 11, 0.55);
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(10px);
+        }
+      }
+
+      section {
+        padding: 96px 0;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 64px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--amber-600);
+        font-family: "Source Sans 3", sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.74rem;
+      }
+
+      h2 {
+        margin: 0 0 26px;
+        font-size: clamp(2.1rem, 5vw, 3.5rem);
+        line-height: 1.14;
+        font-weight: 500;
+      }
+
+      .lead,
+      .copy {
+        font-family: "Source Sans 3", sans-serif;
+        color: var(--stone-600);
+        line-height: 1.7;
+      }
+
+      .lead {
+        font-size: 1.18rem;
+      }
+
+      blockquote {
+        margin: 26px 0 0;
+        border-left: 4px solid var(--amber-500);
+        padding: 8px 0 8px 18px;
+        font-size: 1.6rem;
+        font-style: italic;
+        color: var(--stone-800);
+      }
+
+      .image-panel {
+        aspect-ratio: 4 / 5;
+        border-radius: 28px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 28px 55px rgba(28, 25, 23, 0.25);
+      }
+
+      .image-panel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(1);
+        opacity: 0.84;
+      }
+
+      .image-caption {
+        position: absolute;
+        inset: auto 0 0;
+        padding: 26px;
+        color: #fff;
+        font-size: 0.95rem;
+        font-style: italic;
+        font-family: "Source Sans 3", sans-serif;
+        background: linear-gradient(transparent, rgba(28, 25, 23, 0.72));
+      }
+
+      .dark-band {
+        background: var(--stone-900);
+        color: var(--stone-200);
+      }
+
+      .center-title {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+
+      .center-title p {
+        margin: 0 auto;
+        max-width: 760px;
+        color: var(--stone-400);
+        font-size: 1.12rem;
+        font-family: "Source Sans 3", sans-serif;
+      }
+
+      .era-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .era {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 24px;
+        padding: 30px;
+        transition: background 0.25s ease;
+      }
+
+      .era:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .era .icon {
+        color: var(--amber-500);
+        font-size: 1.65rem;
+        margin-bottom: 16px;
+      }
+
+      .era .period {
+        margin-bottom: 8px;
+        color: var(--amber-500);
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 800;
+      }
+
+      .era h3 {
+        margin: 0 0 12px;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      .era p {
+        margin: 0;
+        font-family: "Source Sans 3", sans-serif;
+        color: var(--stone-400);
+        line-height: 1.65;
+      }
+
+      .stories {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 68px;
+      }
+
+      .stories aside {
+        position: sticky;
+        top: 120px;
+        align-self: start;
+      }
+
+      .stories-list article {
+        padding-bottom: 36px;
+        margin-bottom: 36px;
+        border-bottom: 1px solid var(--stone-200);
+      }
+
+      .stories-list article:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      .stories-list h3 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+        font-weight: 500;
+      }
+
+      .context {
+        color: var(--stone-400);
+        font-family: "Source Sans 3", sans-serif;
+        font-style: italic;
+        margin-bottom: 14px;
+      }
+
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .chips span {
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 800;
+        color: var(--stone-500);
+        background: var(--stone-100);
+        border-radius: 999px;
+        padding: 6px 10px;
+      }
+
+      .soft-band {
+        background: #fef3c7;
+      }
+
+      .modern-wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .modern-wrap .heart {
+        color: var(--amber-600);
+        font-size: 2.25rem;
+        margin-bottom: 12px;
+      }
+
+      .modern-wrap .copy {
+        font-size: 1.2rem;
+        color: var(--stone-700);
+      }
+
+      .cta {
+        margin-top: 32px;
+        background: var(--stone-900);
+        color: #fff;
+        border: 0;
+        border-radius: 999px;
+        padding: 14px 28px;
+        font-family: "Source Sans 3", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .cta:hover {
+        transform: translateY(-2px) scale(1.02);
+        background: #292524;
+      }
+
+      .quotes {
+        border-top: 1px solid var(--stone-200);
+      }
+
+      .quote-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .quote-box {
+        border-radius: 46px;
+        padding: 40px;
+      }
+
+      .quote-box.light {
+        background: var(--stone-100);
+      }
+
+      .quote-box.dark {
+        background: var(--stone-900);
+        color: #fff;
+      }
+
+      .quote-text {
+        margin: 0 0 16px;
+        font-size: 1.7rem;
+        font-style: italic;
+        line-height: 1.45;
+      }
+
+      .quote-author {
+        margin: 0;
+        font-family: "Source Sans 3", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-size: 0.74rem;
+        font-weight: 800;
+      }
+
+      .quote-author.light {
+        color: var(--amber-700);
+      }
+
+      .quote-author.dark {
+        color: var(--stone-400);
+      }
+
+      footer {
+        background: var(--stone-100);
+        border-top: 1px solid var(--stone-200);
+        text-align: center;
+        padding: 64px 24px;
+      }
+
+      footer .small {
+        margin: 0 0 10px;
+        color: var(--stone-400);
+        font-family: "Source Sans 3", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 0.72rem;
+      }
+
+      footer .line {
+        margin: 0 0 24px;
+        font-size: 1.25rem;
+        color: var(--stone-600);
+        font-style: italic;
+      }
+
+      .socials {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        margin: 0 0 24px;
+      }
+
+      .socials a {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid var(--stone-300);
+        border-radius: 999px;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .socials a:hover {
+        background: var(--stone-900);
+        color: #fff;
+      }
+
+      .copyright {
+        margin: 0;
+        color: var(--stone-400);
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 0.74rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1100px) {
+        .era-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 900px) {
+        .menu {
+          display: none;
+        }
+
+        .two-col,
+        .stories,
+        .quote-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stories aside {
+          position: static;
+        }
+
+        section {
+          padding: 76px 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .era-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .quote-box {
+          padding: 28px;
+          border-radius: 32px;
+        }
+
+        .quote-text {
+          font-size: 1.35rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" id="navbar">
+      <div class="container nav-row">
+        <div class="brand">Достоинство</div>
+        <div class="menu">
+          <a href="#philosophy">Философия</a>
+          <a href="#history">История</a>
+          <a href="#stories">Личности</a>
+          <a href="#modern">Сегодня</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1>Бедность - <br /><span>не порок</span></h1>
+        <p>Исследование человеческой души, которая светит ярче в самые темные времена истории.</p>
+        <div class="hero-line"></div>
+      </div>
+    </header>
+
+    <section id="philosophy" class="container two-col reveal">
+      <div>
+        <p class="eyebrow">Введение в суть</p>
+        <h2>Глубокий смысл простой фразы</h2>
+        <div class="lead">
+          <p>
+            Слова Александра Островского, ставшие крылатыми, несут в себе не оправдание нужды, а
+            утверждение незыблемости человеческого достоинства.
+          </p>
+          <p>
+            В мире, где успех часто измеряется цифрами на счету, мы забываем, что бедность - это лишь
+            внешнее обстоятельство, состояние кошелька, но не состояние духа. Порок - это алчность,
+            предательство и пустота сердца. Бедность же может быть спутником благородства.
+          </p>
+          <blockquote>"Человек стоит столько, сколько стоит то, о чем он хлопочет."</blockquote>
+        </div>
+      </div>
+      <div class="image-panel">
+        <img
+          src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+          alt="Стойкость в эпоху трудностей"
+        />
+        <div class="image-caption">Стойкость в простоте. Эпоха великих перемен.</div>
+      </div>
+    </section>
+
+    <div id="history" class="dark-band">
+      <section class="container">
+        <div class="center-title reveal">
+          <h2>Эпохи великих испытаний</h2>
+          <p>Когда мир погружался во тьму нужды, свет человечности становился острее.</p>
+        </div>
+        <div class="era-grid">
+          <article class="era reveal">
+            <div class="icon">◉</div>
+            <div class="period">1929 - 1939</div>
+            <h3>Великая Депрессия</h3>
+            <p>
+              Глобальный экономический крах, оставивший миллионы без крова. В это время родилась
+              культура взаимопомощи, когда сосед делился последним куском хлеба с соседом.
+            </p>
+          </article>
+          <article class="era reveal">
+            <div class="icon">◈</div>
+            <div class="period">1941 - 1944</div>
+            <h3>Блокада Ленинграда</h3>
+            <p>
+              Предел человеческого страдания. Люди, умирая от голода, сохраняли библиотеки, играли
+              симфонии и спасали семена редких растений для будущего.
+            </p>
+          </article>
+          <article class="era reveal">
+            <div class="icon">△</div>
+            <div class="period">1945 - 1955</div>
+            <h3>Послевоенная Европа</h3>
+            <p>
+              Целые нации начинали с нуля среди руин. Эпоха, когда достоинство заключалось в труде по
+              восстановлению мира, несмотря на отсутствие элементарных благ.
+            </p>
+          </article>
+          <article class="era reveal">
+            <div class="icon">✦</div>
+            <div class="period">XIX век</div>
+            <h3>Индустриальная Революция</h3>
+            <p>
+              Время чудовищной городской бедности, описанное Диккенсом и Достоевским. Именно в этой
+              грязи родились идеи о правах человека и социальной справедливости.
+            </p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <section id="stories" class="container stories">
+      <aside class="reveal">
+        <h2 style="font-size: 2.35rem">Специфические случаи стойкости</h2>
+        <p class="lead">
+          История знает тех, кто превратил свою нужду в высшую форму духовной свободы или научного
+          подвига.
+        </p>
+      </aside>
+      <div class="stories-list">
+        <article class="reveal">
+          <h3>Виктор Франкл</h3>
+          <div class="context">Концлагеря Третьего рейха</div>
+          <p class="copy">
+            Потеряв все - семью, рукопись всей жизни, одежду и имя, Франкл обнаружил "последнюю
+            человеческую свободу": право выбирать свое отношение к обстоятельствам. В глубочайшей
+            нищете и страдании он создал логотерапию, помогающую миллионам найти смысл жизни.
+          </p>
+          <div class="chips"><span>Смысл</span><span>Психология</span><span>Выживание</span></div>
+        </article>
+
+        <article class="reveal">
+          <h3>Мария Кюри</h3>
+          <div class="context">Париж, годы учебы</div>
+          <p class="copy">
+            Живя в неотапливаемой мансарде и питаясь лишь хлебом с чаем, Мария работала по 12 часов
+            в день. Ее бедность была ценой за знания, которые позже перевернули физику и химию.
+            Она дважды стала лауреатом Нобелевской премии, оставаясь равнодушной к богатству.
+          </p>
+          <div class="chips"><span>Наука</span><span>Самоотречение</span><span>Гений</span></div>
+        </article>
+
+        <article class="reveal">
+          <h3>Диоген Синопский</h3>
+          <div class="context">Древняя Греция</div>
+          <p class="copy">
+            Философ, который сознательно выбрал бедность как путь к истине. Живя в пифосе, он
+            демонстрировал, что человек может быть свободным и счастливым, не имея ничего, кроме
+            своего ума. Его ответ Александру Македонскому - "Отойди, ты заслоняешь мне солнце" -
+            стал символом независимости духа.
+          </p>
+          <div class="chips"><span>Философия</span><span>Аскетизм</span><span>Свобода</span></div>
+        </article>
+
+        <article class="reveal">
+          <h3>Уильям Камквамба</h3>
+          <div class="context">Малави, 2000-е годы</div>
+          <p class="copy">
+            Подросток из бедной деревни, охваченной голодом, не мог оплатить школу. С помощью
+            старого учебника по физике и выброшенных на свалку запчастей он построил ветряную
+            мельницу, чтобы качать воду для своей деревни. Отсутствие ресурсов не смогло остановить
+            силу интеллекта и любви к своей семье.
+          </p>
+          <div class="chips"><span>Инновации</span><span>Стойкость</span><span>Надежда</span></div>
+        </article>
+      </div>
+    </section>
+
+    <div id="modern" class="soft-band">
+      <section class="container modern-wrap reveal">
+        <div class="heart">❤</div>
+        <h2>Как это сейчас?</h2>
+        <p class="copy">
+          Сегодня бедность часто прячется за экранами смартфонов или живет в тени мегаполисов. Но
+          проблема не только в отсутствии средств, но и в стигматизации.
+        </p>
+        <p class="copy" style="font-weight: 700; color: var(--stone-900)">
+          Миру не нужна жалость. Миру нужна эмпатия и системные изменения.
+        </p>
+        <p class="copy">
+          Современные герои - это те, кто, находясь в трудных условиях, продолжают учиться,
+          созидать и помогать другим. Это беженцы, сохраняющие культуру, это молодые таланты из
+          глубинок, это волонтеры, отдающие последнее время.
+        </p>
+        <button class="cta">Поддержать идеи достоинства -></button>
+      </section>
+    </div>
+
+    <section class="container quotes">
+      <div class="quote-grid">
+        <article class="quote-box light reveal">
+          <p class="quote-text">"Богатство - это не то, сколько у тебя денег, а то, сколько ты стоишь без них."</p>
+          <p class="quote-author light">Мудрость веков</p>
+        </article>
+        <article class="quote-box dark reveal">
+          <p class="quote-text">"Самые красивые цветы часто растут из самых глубоких трещин в асфальте."</p>
+          <p class="quote-author dark">О человеческой стойкости</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <p class="small">Проект-размышление</p>
+      <p class="line">Бедность - не порок. Порок - это отсутствие души.</p>
+      <div class="socials">
+        <a href="#" aria-label="Глобус">◎</a>
+        <a href="#" aria-label="Книга">▣</a>
+        <a href="#" aria-label="Сердце">❤</a>
+      </div>
+      <p class="copyright">© 2026 Хроники Достоинства. Все мысли свободны.</p>
+    </footer>
+
+    <script>
+      const nav = document.getElementById("navbar");
+      const onScroll = () => {
+        nav.classList.toggle("scrolled", window.scrollY > 50);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll);
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
